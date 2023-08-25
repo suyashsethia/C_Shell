@@ -5,6 +5,7 @@ char historypath[1000];
 int historySize = 0;
 char history[20][256];
 
+
 void initialiseHistory()
 {
     historySize = 0;

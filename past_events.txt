@@ -1,8 +1,15 @@
-peek
-peek peek amey peek
-peek -l amey
-peek
-peek -a amey
-peek -l amey
-proclore
-exit
+seek amey
+seek amey
+seek amey
+seek amey
+seek amey
+seek amey
+seek amey
+seek amey
+seek amey
+seek amey
+seek amey
+seek amey
+seek amey
+seek amey
+seek amey

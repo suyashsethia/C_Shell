@@ -37,7 +37,7 @@ void proclore(pid_t pid)
     {
         statusSymbol = NULL;
     }
-   
+
     printf(BMAG "pid : %d\n" reset, pid);
     printf(BCYN "Process Status : %c%s\n" reset, processStatus[0], (statusSymbol ? "+" : ""));
     printf(BYEL "Process Group : %d\n" reset, getpgid(pid));
@@ -62,8 +62,8 @@ void proclore(pid_t pid)
     fclose(memFile);
 
     // Obtain executable path
-
-    ssize_t exePathSize = readlink("/proc/self/exe", exePath, sizeof(exePath) - 1);
+    sprintf(path, "/proc/%d/exe", pid);
+    ssize_t exePathSize = readlink(path, exePath, sizeof(exePath) - 1);
     if (exePathSize != -1)
     {
         exePath[exePathSize] = '\0';
@@ -71,10 +71,9 @@ void proclore(pid_t pid)
     else
     {
         perror(BRED "Error reading executable path" reset);
-        exit(EXIT_FAILURE);
     }
     // convert excecutable path to relative path and use ~ for initial directory
-    
+
     if (strstr(exePath, initdir) == exePath)
     {
         char *temp = exePath + strlen(initdir);
@@ -82,7 +81,10 @@ void proclore(pid_t pid)
         exePath[1] = '\0';
         strcat(exePath, temp);
     }
-    
+
     printf(BBLU "Virtual memory : %ld\n" reset, vmSize);
-    printf(BWHT "Executable path : %s\n" reset, exePath);
+    if (exePathSize != -1)
+    {
+        printf(BWHT "Executable path : %s\n" reset, exePath);
+    }
 }

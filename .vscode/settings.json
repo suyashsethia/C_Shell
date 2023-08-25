@@ -2,6 +2,8 @@
     "files.associations": {
         "warp.h": "c",
         "headers.h": "c",
-        "pastevents.h": "c"
+        "pastevents.h": "c",
+        "process.h": "c",
+        "types.h": "c"
     }
 }

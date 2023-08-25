@@ -106,8 +106,8 @@ void peek(char **argc)
         exit(1);
     }
     destination[0] = '\0';
-    strcpy(destination, initdir);
-    
+
+    getcwd(destination, 256);
     int j = 0;
     while (argc[i] != NULL && strlen(argc[i]) > 0)
     {
@@ -143,8 +143,19 @@ void peek(char **argc)
 
         else if (strcmp(argc[i], "..") == 0)
         {
-            chdir("..");
-            getcwd(destination, 256);
+            //get .. directory
+            char temp[256];
+            strcpy(temp, destination);
+            int len = strlen(temp);
+            int k = len - 1;
+            while (temp[k] != '/')
+            {
+                temp[k] = '\0';
+                k--;
+            }
+            temp[k] = '\0';
+            strcpy(destination, temp);
+            // getcwd(destination, 256);
         }
         else if (argc[i][0] == '~')
         {
