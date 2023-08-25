@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "warp.h": "c",
+        "headers.h": "c",
+        "pastevents.h": "c"
+    }
+}
